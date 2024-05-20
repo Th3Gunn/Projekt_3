@@ -84,13 +84,15 @@ std::pair<std::vector<double>, std::vector<double>> dft(const std::vector<double
     return {real, imag};
 }
 
-std::vector<double> idft(const std::vector<double>& real, const std::vector<double>& imag) {
+std::vector<double> idft(const std::vector<double>& real, const std::vector<double>& imag) 
+{
     int n = real.size();
     std::vector<double> signal(n);
-
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) 
+    {
         signal[i] = 0;
-        for (int k = 0; k < n; ++k) {
+        for (int k = 0; k < n; k++) 
+        {
             double angle = 2 * M_PI * k * i / n;
             signal[i] += real[k] * std::cos(angle) - imag[k] * std::sin(angle);
         }
@@ -104,7 +106,7 @@ void peak(std::vector <double> &signal, double length, int sample_rate)
 {
     int samples = static_cast<int>(length * sample_rate);
     std::vector<double> time(samples);
-    for (int i = 0; i < samples; ++i) 
+    for (int i = 0; i < samples; i++) 
     {
         time[i] = i / sample_rate;
     }
@@ -145,7 +147,8 @@ void plot_dft(const std::vector<double>& real, const std::vector<double>& imag, 
     std::vector<double> magnitude(n);
     std::vector<double> frequencies(n);
 
-    for (int k = 0; k < n; ++k) {
+    for (int k = 0; k < n; k++) 
+    {
         magnitude[k] = std::sqrt(real[k] * real[k] + imag[k] * imag[k]);
         frequencies[k] = k * sample_rate / n;
     }
@@ -160,10 +163,12 @@ void plot_dft(const std::vector<double>& real, const std::vector<double>& imag, 
     show();
 }
 
-void plot(const std::vector<double>& signal, double length, int sample_rate) {
+void plot(std::vector<double> &signal, double length, double sample_rate) 
+{
     int samples = static_cast<int>(length * sample_rate);
     std::vector<double> time(samples);
-    for (int i = 0; i < samples; ++i) {
+    for (int i = 0; i < samples; i++) 
+    {
         time[i] = i / sample_rate;
     }
     using namespace matplot;
@@ -172,7 +177,6 @@ void plot(const std::vector<double>& signal, double length, int sample_rate) {
     ax->plot(time, signal);
     ax->xlabel("Time (s)");
     ax->ylabel("Amplitude");
-    ax->title(" ");
     show();
 }
 
