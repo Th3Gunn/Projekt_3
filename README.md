@@ -1,6 +1,6 @@
 Funkcje generujące przebiegi przyjmują argumenty w kolejności:
--częstotliwość,
--amplituda,
+-częstotliwość\n,
+-amplituda\n,
 -długość trwania,
 -częstotliwość próbkowania, 
 -składowa stała,
